@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.sounddesignz.rockdot.projectWizard.RdProjectGeneratorPeer">
+  <grid id="27dc7" binding="myMainPanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="687" height="480"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="ad4af" class="com.intellij.ui.components.JBLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="version.label"/>
+        </properties>
+      </component>
+      <component id="4e54c" class="com.intellij.ui.components.JBLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="b09db"/>
+          <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dart.sdk.path.label"/>
+        </properties>
+      </component>
+      <component id="b09db" class="com.intellij.ui.ComboboxWithBrowseButton" binding="mySdkPathComboWithBrowse" custom-create="true">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="2c07c" class="com.intellij.ui.components.JBLabel" binding="myVersionLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="1.0"/>
+        </properties>
+      </component>
+      <grid id="885b1" binding="myDartiumSettingsPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="3efc8" class="com.intellij.ui.ComboboxWithBrowseButton" binding="myDartiumPathComboWithBrowse" custom-create="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="6e8bb" class="javax.swing.JButton" binding="myDartiumSettingsButton">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dartium.settings.button"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="c289d" class="com.intellij.ui.components.JBLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="3efc8"/>
+          <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dartium.path.label"/>
+        </properties>
+      </component>
+      <vspacer id="e8033">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <grid id="707a4" binding="myTemplatesPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="etched">
+          <color color="-4473925"/>
+        </border>
+        <children>
+          <grid id="15b3b" binding="myLoadedTemplatesPanel" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <scrollpane id="cf2a0" class="com.intellij.ui.components.JBScrollPane">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="94cd3" class="com.intellij.ui.components.JBList" binding="myTemplatesList">
+                    <constraints/>
+                    <properties>
+                      <selectionMode value="0"/>
+                      <visibleRowCount value="8"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="dcfca" class="com.intellij.ui.components.JBCheckBox" binding="myInstallMaterial">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.material"/>
+                </properties>
+              </component>
+              <component id="2bfc8" class="com.intellij.ui.components.JBCheckBox" binding="myCreateSampleProjectCheckBox">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dart.project.generate.sample.content.label"/>
+                </properties>
+              </component>
+              <component id="e1ef1" class="com.intellij.ui.components.JBCheckBox" binding="myInstallGoogle">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.google"/>
+                </properties>
+              </component>
+              <component id="e4c07" class="com.intellij.ui.components.JBCheckBox" binding="myInstallFacebook">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.facebook"/>
+                </properties>
+              </component>
+              <component id="788c5" class="com.intellij.ui.components.JBCheckBox" binding="myInstallPhysics">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.physics"/>
+                </properties>
+              </component>
+              <component id="84917" class="com.intellij.ui.components.JBCheckBox" binding="myInstallUGC">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.ugc"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="47d73" binding="myLoadingTemplatesPanel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="ae43a" class="com.intellij.ui.components.JBLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dart.project.templates.loading.message"/>
+                </properties>
+              </component>
+              <hspacer id="5fb44">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <vspacer id="6b6a7">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </vspacer>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <component id="58beb" class="com.intellij.ui.components.JBCheckBox" binding="myCheckedModeCheckBox">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <margin top="2" left="0" bottom="2" right="3"/>
+          <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dartium.checked.mode.label"/>
+        </properties>
+      </component>
+      <component id="d654d" class="com.intellij.ui.components.JBLabel" binding="myErrorLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Error: Path to the Dart SDK is not specified."/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

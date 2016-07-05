@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Dart1">
+    <CLASSES>
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/Dart/lib/Dart.jar!/" />
+      <root url="jar://$IDEA_ULTIMATE_PLUGINS$/JavaScriptDebugger/lib/JavaScriptDebugger.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/Dart/lib/json.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/Dart/lib/resources_en.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
