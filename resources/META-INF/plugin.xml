@@ -37,6 +37,14 @@
             text="Rockdot Command" description="Create new Rockdot Command">
       <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
     </action>
+    <action id="Rockdot.NewElement" class="com.sounddesignz.rockdot.action.CreateElementAction"
+            text="Rockdot Element" description="Create new Rockdot Element">
+      <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+    </action>
+    <action id="Rockdot.NewScreen" class="com.sounddesignz.rockdot.action.CreateScreenAction"
+            text="Rockdot Screen" description="Create new Rockdot Screen">
+      <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+    </action>
   </actions>
 
 </idea-plugin>

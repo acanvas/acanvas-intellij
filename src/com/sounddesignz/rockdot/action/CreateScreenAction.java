@@ -24,22 +24,21 @@ import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
-public class CreateCommandAction extends AbstractCreateAction {
-  public CreateCommandAction() {
-    super("command");
-  }
+public class CreateScreenAction extends AbstractCreateAction {
+    public CreateScreenAction() {
+        super("screen");
+    }
 
-  @Override
-  protected CreateHandler getHandler(Project project) {
-    return new CreateCommandHandler(project, (Component) null);
-  }
+    @Override
+    protected CreateHandler getHandler(Project project) {
+        return new CreateScreenHandler(project, (Component) null);
+    }
 }
 
-class CreateCommandHandler extends CreateHandler {
+class CreateScreenHandler extends CreateHandler {
 
-  public CreateCommandHandler(@Nullable Project project, @Nullable Component dialogParent) {
-    super(project, dialogParent);
-    dartCommand = "add_command";
-  }
-
+    public CreateScreenHandler(@Nullable Project project, @Nullable Component dialogParent) {
+        super(project, dialogParent);
+        dartCommand = "add_screen";
+    }
 }
