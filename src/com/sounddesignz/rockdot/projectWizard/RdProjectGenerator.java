@@ -10,8 +10,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.sounddesignz.rockdot.common.RockdotBundle;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-
 public class RdProjectGenerator extends WebProjectTemplate<RdProjectWizardData> implements Comparable<RdProjectGenerator> {
 
   @NotNull

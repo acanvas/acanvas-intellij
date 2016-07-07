@@ -21,7 +21,7 @@
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
   <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
+  <depends>RdSettingsForm.intellij.modules.lang</depends>
   -->
 
   <extensions defaultExtensionNs="com.intellij">
@@ -44,6 +44,10 @@
     <action id="Rockdot.NewScreen" class="com.sounddesignz.rockdot.action.CreateScreenAction"
             text="Rockdot Screen" description="Create new Rockdot Screen">
       <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+    </action>
+    <action id="Rockdot.Settings" class="com.sounddesignz.rockdot.action.settings.RdSettingsAction"
+            text="Rockdot Settings..." description="Edit settings of your Rockdot project">
+      <add-to-group group-id="FileMenu" anchor="before" relative-to-action="ShowSettings"/>
     </action>
   </actions>
 

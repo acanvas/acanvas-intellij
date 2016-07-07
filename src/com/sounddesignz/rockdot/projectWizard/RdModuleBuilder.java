@@ -20,6 +20,7 @@ import com.intellij.openapi.roots.ModifiableModelsProvider;
 import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.libraries.LibraryTable;
 import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar;
+import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.io.FileUtilRt;
@@ -30,8 +31,6 @@ import com.jetbrains.lang.dart.sdk.DartSdkGlobalLibUtil;
 import com.jetbrains.lang.dart.sdk.DartSdkUtil;
 import com.jetbrains.lang.dart.util.PubspecYamlUtil;
 import com.sounddesignz.rockdot.common.RockdotBundle;
-import com.sounddesignz.rockdot.projectWizard.RdModuleWizardStep;
-import com.sounddesignz.rockdot.projectWizard.RdProjectWizardData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -85,6 +84,7 @@ public class RdModuleBuilder extends ModuleBuilder {
     Disposer.register(parentDisposable, step);
     return step;
   }
+
 
   public void setWizardData(final RdProjectWizardData wizardData) {
     myWizardData = wizardData;

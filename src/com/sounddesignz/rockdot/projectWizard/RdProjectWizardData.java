@@ -1,6 +1,5 @@
 package com.sounddesignz.rockdot.projectWizard;
 
-import com.intellij.ide.bookmarks.Bookmark;
 import com.intellij.ide.browsers.chrome.ChromeSettings;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

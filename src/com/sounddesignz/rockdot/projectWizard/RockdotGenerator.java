@@ -48,7 +48,7 @@ public class RockdotGenerator {
     }
   }
 
-  private static final Logger LOG = Logger.getInstance("#com.sounddesignz.rockdot.projectWizard.RockdotGenerator");
+  private static final Logger LOG = Logger.getInstance("#RdSettingsForm.sounddesignz.rockdot.projectWizard.RockdotGenerator");
   private static final List<RockdotGeneratorDescriptor> EMPTY = new ArrayList<RockdotGeneratorDescriptor>();
 
   private static final class PubRunner {
@@ -168,7 +168,7 @@ public class RockdotGenerator {
         List<String> list = new ArrayList<String>();
         list.add("global");
         list.add("activate");
-        list.add("--source git https://github.com/blockforest/rockdot-generator");
+        list.add("--source git https://github.RdSettingsForm/blockforest/rockdot-generator");
       new PubRunner().runSync(sdkRoot, 60, list);
     }
     catch (RockdotGeneratorException e) {
