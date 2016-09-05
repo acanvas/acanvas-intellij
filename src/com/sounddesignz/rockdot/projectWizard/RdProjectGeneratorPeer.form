@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.sounddesignz.rockdot.projectWizard.RdProjectGeneratorPeer">
-  <grid id="27dc7" binding="myMainPanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc7" binding="myMainPanel" layout-manager="GridLayoutManager" row-count="9" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="687" height="480"/>
+      <xy x="20" y="20" width="963" height="515"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -72,22 +72,141 @@
           <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dartium.path.label"/>
         </properties>
       </component>
-      <vspacer id="e8033">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <grid id="707a4" binding="myTemplatesPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="707a4" binding="optionsTable" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
         <border type="etched">
           <color color="-4473925"/>
         </border>
         <children>
-          <grid id="15b3b" binding="myLoadedTemplatesPanel" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="15b3b" binding="sxlOptionsPanel" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="6a481" class="com.intellij.ui.components.JBCheckBox" binding="sxlDragonBones">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.extension.dragenbones"/>
+                </properties>
+              </component>
+              <component id="2bfc8" class="com.intellij.ui.components.JBCheckBox" binding="sxlBitmapFont">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.extension.bitmapfont"/>
+                </properties>
+              </component>
+              <component id="fff90" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.extension.colname"/>
+                </properties>
+              </component>
+              <component id="aced" class="com.intellij.ui.components.JBCheckBox" binding="sxlFlump">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.extension.flump"/>
+                </properties>
+              </component>
+              <component id="4e999" class="com.intellij.ui.components.JBCheckBox" binding="sxlGAF">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.extension.gaf"/>
+                </properties>
+              </component>
+              <component id="f8f81" class="com.intellij.ui.components.JBCheckBox" binding="sxlBitmapFontExamples">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="4b017" class="com.intellij.ui.components.JBCheckBox" binding="sxlDragonBonesExamples">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="a0931" class="com.intellij.ui.components.JBCheckBox" binding="sxlFlumpExamples">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="b8c3" class="com.intellij.ui.components.JBCheckBox" binding="sxlGAFExamples">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="d002" class="com.intellij.ui.components.JBCheckBox" binding="sxlSpineExamples">
+                <constraints>
+                  <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="ca7f6" class="com.intellij.ui.components.JBCheckBox" binding="sxlSpine">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.extension.spine"/>
+                </properties>
+              </component>
+              <component id="73f66" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.examples.colhead"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="91c55" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.options"/>
+            </properties>
+          </component>
+          <grid id="c01b1" binding="rdOptionsPanel" layout-manager="GridLayoutManager" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -95,106 +214,140 @@
             <properties/>
             <border type="none"/>
             <children>
-              <scrollpane id="cf2a0" class="com.intellij.ui.components.JBScrollPane">
+              <component id="c9beb" class="com.intellij.ui.components.JBCheckBox" binding="rdUGC">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties/>
-                <border type="none"/>
-                <children>
-                  <component id="94cd3" class="com.intellij.ui.components.JBList" binding="myTemplatesList">
-                    <constraints/>
-                    <properties>
-                      <selectionMode value="0"/>
-                      <visibleRowCount value="8"/>
-                    </properties>
-                  </component>
-                </children>
-              </scrollpane>
-              <component id="dcfca" class="com.intellij.ui.components.JBCheckBox" binding="myInstallMaterial">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <margin top="2" left="0" bottom="2" right="3"/>
-                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.material"/>
-                </properties>
-              </component>
-              <component id="2bfc8" class="com.intellij.ui.components.JBCheckBox" binding="myCreateSampleProjectCheckBox">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <margin top="2" left="0" bottom="2" right="3"/>
-                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dart.project.generate.sample.content.label"/>
-                </properties>
-              </component>
-              <component id="e1ef1" class="com.intellij.ui.components.JBCheckBox" binding="myInstallGoogle">
-                <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <margin top="2" left="0" bottom="2" right="3"/>
-                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.google"/>
-                </properties>
-              </component>
-              <component id="e4c07" class="com.intellij.ui.components.JBCheckBox" binding="myInstallFacebook">
-                <constraints>
-                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <margin top="2" left="0" bottom="2" right="3"/>
-                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.facebook"/>
-                </properties>
-              </component>
-              <component id="788c5" class="com.intellij.ui.components.JBCheckBox" binding="myInstallPhysics">
-                <constraints>
-                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <margin top="2" left="0" bottom="2" right="3"/>
-                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.physics"/>
-                </properties>
-              </component>
-              <component id="84917" class="com.intellij.ui.components.JBCheckBox" binding="myInstallUGC">
-                <constraints>
-                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <margin top="2" left="0" bottom="2" right="3"/>
                   <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.ugc"/>
                 </properties>
               </component>
-            </children>
-          </grid>
-          <grid id="47d73" binding="myLoadingTemplatesPanel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-            <border type="none"/>
-            <children>
-              <component id="ae43a" class="com.intellij.ui.components.JBLabel">
+              <component id="78b4e" class="com.intellij.ui.components.JBCheckBox" binding="rdPhysics">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.physics"/>
+                </properties>
+              </component>
+              <component id="152f8" class="com.intellij.ui.components.JBCheckBox" binding="rdFacebook">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.facebook"/>
+                </properties>
+              </component>
+              <component id="c5553" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.extension.colname"/>
+                </properties>
+              </component>
+              <component id="c1b72" class="com.intellij.ui.components.JBCheckBox" binding="rdMaterial">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.material"/>
+                </properties>
+              </component>
+              <component id="5f4f8" class="com.intellij.ui.components.JBCheckBox" binding="rdGoogle">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.google"/>
+                </properties>
+              </component>
+              <component id="ec8a" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dart.project.templates.loading.message"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.examples.colhead"/>
                 </properties>
               </component>
-              <hspacer id="5fb44">
+              <component id="a6ef4" class="com.intellij.ui.components.JBCheckBox" binding="rdMaterialExamples">
                 <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
-              </hspacer>
-              <vspacer id="6b6a7">
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="ebc72" class="com.intellij.ui.components.JBCheckBox" binding="rdGoogleExamples">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
-              </vspacer>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="9e0a3" class="com.intellij.ui.components.JBCheckBox" binding="rdFacebookExamples">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="85a57" class="com.intellij.ui.components.JBCheckBox" binding="rdPhysicsExamples">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="8db41" class="com.intellij.ui.components.JBCheckBox" binding="rdUGCExamples">
+                <constraints>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
+              <component id="b7e8f" class="com.intellij.ui.components.JBCheckBox" binding="rdBabylon">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.plugin.babylon"/>
+                </properties>
+              </component>
+              <component id="48dce" class="com.intellij.ui.components.JBCheckBox" binding="rdBabylonExamples">
+                <constraints>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <margin top="2" left="0" bottom="2" right="3"/>
+                  <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.colname"/>
+                </properties>
+              </component>
             </children>
           </grid>
+          <component id="7b0e7" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="rockdot.options"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <component id="58beb" class="com.intellij.ui.components.JBCheckBox" binding="myCheckedModeCheckBox">
@@ -208,12 +361,75 @@
       </component>
       <component id="d654d" class="com.intellij.ui.components.JBLabel" binding="myErrorLabel">
         <constraints>
-          <grid row="6" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="8" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Error: Path to the Dart SDK is not specified."/>
         </properties>
       </component>
+      <grid id="867fe" binding="frameworkTable" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="line">
+          <color color="-16777216"/>
+        </border>
+        <children>
+          <component id="d873d" class="javax.swing.JRadioButton" binding="rdRadioButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="framework.choice.rockdot"/>
+            </properties>
+          </component>
+          <component id="33fcb" class="com.intellij.ui.components.JBCheckBox" binding="sxlExamplesForRd">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <margin top="2" left="0" bottom="2" right="3"/>
+              <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="stagexl.examples.standards"/>
+            </properties>
+          </component>
+          <component id="760a6" class="javax.swing.JRadioButton" binding="sxlRadioButton">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="framework.choice.stagexl"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="c2fa5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Choose Framework"/>
+        </properties>
+      </component>
+      <grid id="47d73" binding="loadingPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="ae43a" class="com.intellij.ui.components.JBLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="com/sounddesignz/rockdot/common/RockdotBundle" key="dart.project.templates.loading.message"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

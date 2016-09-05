@@ -3,13 +3,10 @@ package com.sounddesignz.rockdot.common;
 import com.intellij.openapi.roots.libraries.DummyLibraryProperties;
 import com.intellij.openapi.roots.libraries.LibraryKind;
 import com.intellij.openapi.roots.libraries.LibraryPresentationProvider;
-import com.intellij.openapi.roots.libraries.LibraryProperties;
 import com.intellij.openapi.vfs.VirtualFile;
-import icons.DartIcons;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
 import java.util.List;
 
 public class RdSdkLibraryPresentationProvider extends LibraryPresentationProvider<DummyLibraryProperties> {

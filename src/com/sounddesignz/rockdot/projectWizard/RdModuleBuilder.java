@@ -20,7 +20,6 @@ import com.intellij.openapi.roots.ModifiableModelsProvider;
 import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.libraries.LibraryTable;
 import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar;
-import com.intellij.openapi.roots.ui.configuration.ModulesProvider;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.io.FileUtilRt;
@@ -34,7 +33,6 @@ import com.sounddesignz.rockdot.common.RockdotBundle;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.Collection;
 
@@ -104,15 +102,15 @@ public class RdModuleBuilder extends ModuleBuilder {
                            @NotNull final RdProjectWizardData wizardData) {
 
 
-    final String templateName = wizardData.myTemplate == null ? "Empty project" : wizardData.myTemplate.getName();
+    final String templateName = wizardData.template == null ? "Empty project" : wizardData.template.getName();
     UsageTrigger.trigger("RockdotProjectWizard." + templateName);
 
     //setupSdkAndDartium(modifiableRootModel, wizardData);
-    if (wizardData.myTemplate != null) {
+    if (wizardData.template != null) {
       try {
 
         final Collection<VirtualFile> filesToOpen =
-          wizardData.myTemplate.generateProject(wizardData, modifiableRootModel.getModule(), baseDir);
+          wizardData.template.generateProject(wizardData, modifiableRootModel.getModule(), baseDir);
         if (!filesToOpen.isEmpty()) {
           scheduleFilesOpeningAndPubGet(modifiableRootModel.getModule(), filesToOpen);
         }
@@ -125,7 +123,7 @@ public class RdModuleBuilder extends ModuleBuilder {
                                          @NotNull final RdProjectWizardData wizardData) {
     // similar to DartConfigurable.apply()
     if (DartSdkUtil.isDartSdkHome(wizardData.dartSdkPath)) {
-      DartSdkUtil.updateKnownSdkPaths(modifiableRootModel.getProject(), wizardData.dartSdkPath);
+      //DartSdkUtil.updateKnownSdkPaths(modifiableRootModel.getProject(), wizardData.dartSdkPath);
 
       final LibraryTable.ModifiableModel libraryTableModifiableModel =
         ModifiableModelsProvider.SERVICE.getInstance().getLibraryTableModifiableModel();

@@ -1,42 +1,67 @@
 package com.sounddesignz.rockdot.projectWizard;
 
 import com.intellij.ide.browsers.chrome.ChromeSettings;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RdProjectWizardData {
-  @NotNull public final String dartSdkPath;
-  @NotNull public final String dartiumPath;
-  @NotNull public final ChromeSettings dartiumSettings;
-  @Nullable public final RdProjectTemplate myTemplate;
 
-  @NotNull public final Boolean installSamples;
-  @NotNull public final Boolean installMaterial;
-  @NotNull public final Boolean installGoogle;
-  @NotNull public final Boolean installFacebook;
-  @NotNull public final Boolean installPhysics;
-  @NotNull public final Boolean installUGC;
+  public String dartSdkPath;
+  public String dartiumPath;
+  public ChromeSettings dartiumSettings;
+  public RdProjectTemplate template;
 
-  public RdProjectWizardData(@NotNull final String dartSdkPath,
-                             @NotNull final String dartiumPath,
-                             @NotNull final ChromeSettings dartiumSettings,
-                             @Nullable final RdProjectTemplate template,
-                             @NotNull final Boolean installSamples,
-                             @NotNull final Boolean installMaterial,
-                             @NotNull final Boolean installGoogle,
-                             @NotNull final Boolean installFacebook,
-                             @NotNull final Boolean installPhysics,
-                             @NotNull final Boolean installUGC) {
-    this.dartSdkPath = dartSdkPath;
-    this.dartiumPath = dartiumPath;
-    this.dartiumSettings = dartiumSettings;
-    myTemplate = template;
+  public boolean stagexl;
+  public boolean stagexlExamples;
 
-    this.installSamples = installSamples;
-    this.installMaterial = installMaterial;
-    this.installGoogle = installGoogle;
-    this.installFacebook = installFacebook;
-    this.installPhysics = installPhysics;
-    this.installUGC = installUGC;
+  public boolean material;
+  public boolean materialExamples;
+  public boolean google;
+  public boolean googleExamples;
+  public boolean facebook;
+  public boolean facebookExamples;
+  public boolean physics;
+  public boolean physicsExamples;
+  public boolean ugc;
+  public boolean ugcExamples;
+
+  //StageXL Options
+  public boolean bitmapFont;
+  public boolean bitmapFontExamples;
+  public boolean dragonBones;
+  public boolean dragonBonesExamples;
+  public boolean flump;
+  public boolean flumpExamples;
+  public boolean gaf;
+  public boolean gafExamples;
+  public boolean spine;
+  public boolean spineExamples;
+  public boolean babylon;
+  public boolean babylonExamples;
+
+  public RdProjectWizardData() {
+   
+  }
+
+  public List<String> toList() {
+    List<String> list = new ArrayList<String>();
+
+    Field[] fields = this.getClass().getFields();
+    for (Field field : fields) {
+      if(field.getType().isAssignableFrom(boolean.class)){
+        field.setAccessible(true);
+        try {
+          if((boolean) field.get(this)) {
+            list.add("--" + field.getName());
+          }
+        } catch (IllegalAccessException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+
+    return list;
   }
 }

@@ -14,8 +14,6 @@ import com.intellij.psi.util.CachedValuesManager;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.containers.ContainerUtil;
 import com.jetbrains.lang.dart.DartProjectComponent;
-import com.jetbrains.lang.dart.sdk.DartSdk;
-import com.jetbrains.lang.dart.sdk.DartSdkLibraryPresentationProvider;
 import com.jetbrains.lang.dart.sdk.DartSdkUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

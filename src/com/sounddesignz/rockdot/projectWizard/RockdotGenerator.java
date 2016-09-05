@@ -91,32 +91,8 @@ public class RockdotGenerator {
     list.add("rockdot_generator");
     list.add("basic");
 
-    if(wizardData.installSamples){
-      params += " --install-demos";
-      list.add("--install-demos");
-    }
-    if(wizardData.installMaterial){
-      params += " --material";
-      list.add("--material");
-    }
-    if(wizardData.installGoogle){
-      params += " --google";
-      list.add("--google");
-    }
-    if(wizardData.installFacebook){
-      params += " --facebook";
-      list.add("--facebook");
-    }
-    if(wizardData.installPhysics){
-      params += " --physics";
-      list.add("--physics");
-    }
-    if(wizardData.installUGC){
-      params += " --ugc";
-      list.add("--ugc");
-    }
+    list.addAll(wizardData.toList());
 
-    //final ProcessOutput output = new PubRunner(projectDirectory).runSync(wizardData.dartSdkPath, 30, "global", "run", "rockdot_generator", params);
     final ProcessOutput output = new PubRunner(projectDirectory).runSync(wizardData.dartSdkPath, 30, list);
     if (output.getExitCode() != 0) {
       throw new RockdotGeneratorException(output.getStderr());
@@ -168,7 +144,7 @@ public class RockdotGenerator {
         List<String> list = new ArrayList<String>();
         list.add("global");
         list.add("activate");
-        list.add("--source git https://github.RdSettingsForm/blockforest/rockdot-generator");
+        list.add("--source git https://github.com/blockforest/rockdot-generator");
       new PubRunner().runSync(sdkRoot, 60, list);
     }
     catch (RockdotGeneratorException e) {

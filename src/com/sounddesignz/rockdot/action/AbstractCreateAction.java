@@ -13,8 +13,6 @@ import com.intellij.openapi.ui.Messages;
 import com.sounddesignz.rockdot.common.RockdotBundle;
 import icons.DartIcons;
 
-import java.awt.*;
-
 /**
  * Created by ndoehring on 05.07.16.
  */

@@ -24,7 +24,6 @@ import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
-import com.intellij.ui.components.JBList;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.util.ui.AsyncProcessIcon;
 import com.intellij.xml.util.XmlStringUtil;
@@ -37,10 +36,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.text.JTextComponent;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -57,23 +53,44 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
   private JButton myDartiumSettingsButton;
   private JBCheckBox myCheckedModeCheckBox;
 
-  private JPanel myTemplatesPanel;
-  private JPanel myLoadingTemplatesPanel;
-  private JPanel myLoadedTemplatesPanel;
-  private JBCheckBox myCreateSampleProjectCheckBox;
-  private JBCheckBox myInstallMaterial;
-  private JBCheckBox myInstallGoogle;
-  private JBCheckBox myInstallFacebook;
-  private JBCheckBox myInstallPhysics;
-  private JBCheckBox myInstallUGC;
-  private JBList myTemplatesList;
+  private JPanel optionsTable;
+  private JPanel loadingPanel;
+  private JPanel sxlOptionsPanel;
+  private JBCheckBox sxlBitmapFont;
 
   private JBLabel myErrorLabel; // shown in IntelliJ IDEA only
+  private JRadioButton sxlRadioButton;
+  private JRadioButton rdRadioButton;
+  private JBCheckBox sxlBitmapFontExamples;
+  private JBCheckBox sxlDragonBonesExamples;
+  private JBCheckBox sxlDragonBones;
+  private JBCheckBox sxlFlump;
+  private JBCheckBox sxlFlumpExamples;
+  private JBCheckBox sxlGAFExamples;
+  private JBCheckBox sxlGAF;
+  private JBCheckBox sxlSpine;
+  private JBCheckBox sxlSpineExamples;
+  private JBCheckBox rdMaterial;
+  private JBCheckBox rdMaterialExamples;
+  private JBCheckBox rdGoogle;
+  private JBCheckBox rdGoogleExamples;
+  private JBCheckBox rdFacebook;
+  private JBCheckBox rdFacebookExamples;
+  private JBCheckBox rdPhysics;
+  private JBCheckBox rdPhysicsExamples;
+  private JBCheckBox rdUGC;
+  private JBCheckBox rdUGCExamples;
+  private JBCheckBox rdBabylon;
+  private JBCheckBox rdBabylonExamples;
+  private JBCheckBox sxlExamplesForRd;
+  private JPanel frameworkTable;
+  private JPanel rdOptionsPanel;
   private JBCheckBox star;
 
   private ChromeSettings myDartiumSettingsCurrent;
 
   private boolean myIntellijLiveValidationEnabled = false;
+  private RdProjectTemplate _selectedTemplate;
 
   public RdProjectGeneratorPeer() {
 
@@ -112,14 +129,6 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
     final boolean checkedMode = dartiumInitial == null || DartiumUtil.isCheckedMode(myDartiumSettingsCurrent.getEnvironmentVariables());
     myCheckedModeCheckBox.setSelected(checkedMode);
 
-    myCreateSampleProjectCheckBox.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(final ActionEvent e) {
-        myTemplatesList.setEnabled(myCreateSampleProjectCheckBox.isSelected());
-      }
-    });
-
-    myTemplatesList.setEmptyText(RockdotBundle.message("set.sdk.to.see.sample.content.options"));
 
     myErrorLabel.setIcon(AllIcons.Actions.Lightning);
     myErrorLabel.setVisible(false);
@@ -130,10 +139,7 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
       startLoadingTemplates();
     }
     else {
-      myLoadingTemplatesPanel.setVisible(false);
-
-      myCreateSampleProjectCheckBox.setEnabled(false);
-      myTemplatesList.setEnabled(false);
+      loadingPanel.setVisible(false);
 
       final JTextComponent editorComponent = (JTextComponent)mySdkPathComboWithBrowse.getComboBox().getEditor().getEditorComponent();
       editorComponent.getDocument().addDocumentListener(new DocumentAdapter() {
@@ -151,15 +157,13 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
   }
 
   private void startLoadingTemplates() {
-    myLoadingTemplatesPanel.setVisible(true);
-    myLoadingTemplatesPanel.setPreferredSize(myLoadedTemplatesPanel.getPreferredSize());
+    loadingPanel.setVisible(true);
 
-    myLoadedTemplatesPanel.setVisible(false);
+    frameworkTable.setEnabled(false);
+    optionsTable.setEnabled(false);
 
-    myCreateSampleProjectCheckBox.setSelected(false); // until loaded
-
-    final AsyncProcessIcon asyncProcessIcon = new AsyncProcessIcon("Dart project templates loading");
-    myLoadingTemplatesPanel.add(asyncProcessIcon, new GridConstraints());  // defaults are ok: row = 0, column = 0
+    final AsyncProcessIcon asyncProcessIcon = new AsyncProcessIcon("Preparing. Be patient.");
+    loadingPanel.add(asyncProcessIcon, new GridConstraints());  // defaults are ok: row = 0, column = 0
     asyncProcessIcon.resume();
 
     ApplicationManager.getApplication().executeOnPooledThread(() -> {
@@ -173,47 +177,125 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
   }
 
   private void onTemplatesLoaded(final List<RdProjectTemplate> templates) {
-    myLoadingTemplatesPanel.setVisible(false);
-    myLoadedTemplatesPanel.setVisible(true);
-    myCreateSampleProjectCheckBox.setEnabled(true);
-    myTemplatesList.setEnabled(true);
 
-    final String selectedTemplateName = PropertiesComponent.getInstance().getValue(ROCKDOT_PROJECT_TEMPLATE);
-    myCreateSampleProjectCheckBox.setSelected(selectedTemplateName != null);
-    myTemplatesList.setEnabled(myCreateSampleProjectCheckBox.isSelected());
-
-    RdProjectTemplate selectedTemplate = null;
-
-    final DefaultListModel model = new DefaultListModel();
-    for (RdProjectTemplate template : templates) {
-      model.addElement(template);
-
-      if (template.getName().equals(selectedTemplateName)) {
-        selectedTemplate = template;
-      }
+    if(templates.size() == 0){
+      //error
+      return;
     }
 
-    myTemplatesList.setModel(model);
+    _selectedTemplate = (RdProjectTemplate) templates.get(0);
 
-    if (selectedTemplate != null) {
-      myTemplatesList.setSelectedValue(selectedTemplate, true);
-    }
-    else if (templates.size() > 0) {
-      myTemplatesList.setSelectedIndex(0);
-    }
+    loadingPanel.setVisible(false);
 
-    myTemplatesList.setCellRenderer(new DefaultListCellRenderer() {
+    frameworkTable.setEnabled(true);
+    optionsTable.setEnabled(true);
+
+    rdRadioButton.addActionListener(new ActionListener() {
       @Override
-      public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-        final JLabel component = (JLabel)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-        final RdProjectTemplate template = (RdProjectTemplate)value;
-        final String text = template.getDescription().isEmpty()
-                            ? template.getName()
-                            : template.getName() + " - " + StringUtil.decapitalize(template.getDescription());
-        component.setText(text);
-        return component;
+      public void actionPerformed(final ActionEvent e) {
+        if(rdRadioButton.isSelected()){
+
+          rdOptionsPanel.setEnabled( true );
+          _sxlExamplesSetEnabled(true);
+        }
+        //enable full options table
       }
     });
+
+    sxlRadioButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(final ActionEvent e) {
+        if(sxlRadioButton.isSelected()){
+
+          rdOptionsPanel.setEnabled( false );
+          _sxlExamplesSetEnabled(false);
+        }
+      }
+    });
+
+
+    rdRadioButton.setSelected(true);
+
+
+    // manage selection of examples
+    ActionListener al = new ActionListener() {
+      @Override
+      public void actionPerformed(final ActionEvent e) {
+
+        AbstractButton ab = (AbstractButton) e.getSource();
+
+        if(!ab.isSelected()){
+
+          switch(ab.getName()){
+            case "sxlFlump":
+              sxlFlumpExamples.setSelected(false);
+            break;
+            case "sxlBitmapFont":
+              sxlBitmapFontExamples.setSelected(false);
+              break;
+            case "sxlGAF":
+              sxlGAFExamples.setSelected(false);
+              break;
+            case "sxlDragonBones":
+              sxlDragonBonesExamples.setSelected(false);
+              break;
+            case "sxlSpine":
+              sxlSpineExamples.setSelected(false);
+              break;
+            case "rdFacebook":
+              rdFacebookExamples.setSelected(false);
+              break;
+            case "rdGoogle":
+              rdGoogleExamples.setSelected(false);
+              break;
+            case "rdMaterial":
+              rdMaterialExamples.setSelected(false);
+              break;
+            case "rdPhysics":
+              rdPhysicsExamples.setSelected(false);
+              break;
+            case "rdUGC":
+              rdUGCExamples.setSelected(false);
+              break;
+            case "rdBabylon":
+              rdBabylonExamples.setSelected(false);
+              break;
+          }
+
+        }
+
+        if(rdRadioButton.isSelected()){
+
+          rdOptionsPanel.setEnabled( true );
+          _sxlExamplesSetEnabled(true);
+        }
+        //enable full options table
+      }
+    };
+
+    sxlSpine.addActionListener(al);
+    sxlFlump.addActionListener(al);
+    sxlGAF.addActionListener(al);
+    sxlBitmapFont.addActionListener(al);
+    sxlDragonBones.addActionListener(al);
+
+    rdUGC.addActionListener(al);
+    rdPhysics.addActionListener(al);
+    rdFacebook.addActionListener(al);
+    rdGoogle.addActionListener(al);
+    rdMaterial.addActionListener(al);
+    rdBabylon.addActionListener(al);
+
+
+  }
+
+  private void _sxlExamplesSetEnabled(boolean b) {
+    sxlBitmapFontExamples.setEnabled( b );
+    sxlDragonBonesExamples.setEnabled( b );
+    sxlFlumpExamples.setEnabled( b );
+    sxlGAFExamples.setEnabled( b );
+    sxlSpineExamples.setEnabled( b );
+    sxlExamplesForRd.setEnabled( b );
   }
 
   @NotNull
@@ -228,28 +310,62 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
     settingsStep.addSettingsField(RockdotBundle.message("version.label"), myVersionLabel);
     settingsStep.addSettingsField(RockdotBundle.message("dartium.path.label"), myDartiumSettingsPanel);
     settingsStep.addSettingsField("", myCheckedModeCheckBox);
-    settingsStep.addSettingsComponent(myTemplatesPanel);
+    settingsStep.addSettingsComponent(optionsTable);
   }
 
   @NotNull
   @Override
   public RdProjectWizardData getSettings() {
-    final String sdkPath = FileUtil.toSystemIndependentName(mySdkPathComboWithBrowse.getComboBox().getEditor().getItem().toString().trim());
-    final String dartiumPath =
+    RdProjectWizardData pd = new RdProjectWizardData();
+
+    pd.dartSdkPath = FileUtil.toSystemIndependentName(mySdkPathComboWithBrowse.getComboBox().getEditor().getItem().toString().trim());
+    pd.dartiumPath =
       FileUtil.toSystemIndependentName(myDartiumPathComboWithBrowse.getComboBox().getEditor().getItem().toString().trim());
 
-    final RdProjectTemplate template = myCreateSampleProjectCheckBox.isSelected()
-                                         ? (RdProjectTemplate)myTemplatesList.getSelectedValue() : null;
-    PropertiesComponent.getInstance().setValue(ROCKDOT_PROJECT_TEMPLATE, template == null ? null : template.getName());
+    pd.template = _selectedTemplate;
 
-    final boolean samples = myCreateSampleProjectCheckBox.isSelected();
-    final boolean material = myInstallMaterial.isSelected();
-    final boolean google = myInstallGoogle.isSelected();
-    final boolean facebook = myInstallFacebook.isSelected();
-    final boolean physics = myInstallPhysics.isSelected();
-    final boolean ugc = myInstallUGC.isSelected();
+    PropertiesComponent.getInstance().setValue(ROCKDOT_PROJECT_TEMPLATE, _selectedTemplate.getName());
 
-    return new RdProjectWizardData(sdkPath, dartiumPath, myDartiumSettingsCurrent, template, samples, material, google, facebook, physics, ugc);
+    pd.stagexl = sxlRadioButton.isSelected();
+    boolean rd = rdRadioButton.isSelected();
+
+
+    //StageXL Options
+    pd.bitmapFont = sxlBitmapFont.isSelected();
+    pd.dragonBones = sxlDragonBones.isSelected();
+    pd.flump = sxlFlump.isSelected();
+    pd.gaf = sxlGAF.isSelected();
+    pd.spine = sxlSpine.isSelected();
+
+
+    if(rd){
+
+      //StageXL Examples for Rockdot
+      pd.stagexlExamples = sxlExamplesForRd.isSelected();
+
+      //Rockdot Options
+      pd.material = rdMaterial.isSelected();
+      pd.materialExamples = pd.material && rdMaterialExamples.isSelected();
+      pd.google = rdGoogle.isSelected();
+      pd.googleExamples = pd.google && rdGoogleExamples.isSelected();
+      pd.facebook = rdFacebook.isSelected();
+      pd.facebookExamples = pd.facebook && rdFacebookExamples.isSelected();
+      pd.physics = rdPhysics.isSelected();
+      pd.physicsExamples = pd.physics && rdPhysicsExamples.isSelected();
+      pd.ugc = rdUGC.isSelected();
+      pd.ugcExamples = pd.ugc && rdUGCExamples.isSelected();
+      pd.babylon = rdBabylon.isSelected();
+      pd.babylonExamples = pd.babylon && rdBabylonExamples.isSelected();
+
+      pd.bitmapFontExamples = pd.bitmapFont && sxlBitmapFontExamples.isSelected();
+      pd.dragonBonesExamples = pd.dragonBones && sxlDragonBonesExamples.isSelected();
+      pd.flumpExamples = pd.flump && sxlFlumpExamples.isSelected();
+      pd.gafExamples = pd.gaf && sxlGAFExamples.isSelected();
+      pd.spineExamples = pd.spine && sxlSpineExamples.isSelected();
+
+    }
+
+    return pd;
   }
 
   @Nullable
@@ -262,10 +378,8 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
       return new ValidationInfo(message, mySdkPathComboWithBrowse);
     }
 
-    if (myCreateSampleProjectCheckBox.isSelected()) {
-      if (myTemplatesList.getSelectedValue() == null) {
-        return new ValidationInfo(RockdotBundle.message("project.template.not.selected"), myCreateSampleProjectCheckBox);
-      }
+    if (_selectedTemplate == null) {
+        return new ValidationInfo(RockdotBundle.message("project.template.not.selected"), sxlBitmapFont);
     }
 
     return null;
@@ -301,19 +415,6 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
       }
     });
 
-    myCreateSampleProjectCheckBox.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(final ActionEvent e) {
-        validateInIntelliJ();
-      }
-    });
-
-    myTemplatesList.addListSelectionListener(new ListSelectionListener() {
-      @Override
-      public void valueChanged(final ListSelectionEvent e) {
-        validateInIntelliJ();
-      }
-    });
   }
 
   @Override
@@ -331,19 +432,6 @@ public class RdProjectGeneratorPeer implements WebProjectGenerator.GeneratorPeer
       }
     });
 
-    myCreateSampleProjectCheckBox.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(final ActionEvent e) {
-        stateListener.stateChanged(validate() == null);
-      }
-    });
-
-    myTemplatesList.addListSelectionListener(new ListSelectionListener() {
-      @Override
-      public void valueChanged(final ListSelectionEvent e) {
-        stateListener.stateChanged(validate() == null);
-      }
-    });
   }
 
   private void createUIComponents() {

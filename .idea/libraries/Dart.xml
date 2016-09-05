@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="jar://$APPLICATION_PLUGINS_DIR$/Dart/lib/Dart.jar!/" />
       <root url="jar://$APPLICATION_PLUGINS_DIR$/Dart/lib/json.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/Dart/lib/resources_en.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
